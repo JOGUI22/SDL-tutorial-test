@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1388758053 source:/home/oxid22/Coding Project/estudisdl/main.cpp
+	<cstdlib>
+	<stdlib.h>
+	<string>
+	"Game.h"
+
+1388758053 /home/oxid22/Coding Project/estudisdl/Game.h
+	<string>
+	<SDL2/SDL.h>
+	<iostream>
+
+1388758983 source:/home/oxid22/Coding Project/estudisdl/Game.cpp
+	"Game.h"
+

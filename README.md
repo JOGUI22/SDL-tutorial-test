@@ -1,0 +1,3 @@
+README......
+
+This Git it's only for testing pruposes meanwhile I start to learn SDL lib.
