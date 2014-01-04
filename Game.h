@@ -5,6 +5,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <iostream>
+#include "TextureManager.h"
 
 using namespace std;
 
@@ -13,7 +14,7 @@ class Game
     public:
         //Constructors
         Game();
-        virtual ~Game();
+        ~Game();
 
         //Game metodes
         bool inicialitzar(char* title, int xpos, int ypos, int width, int height, Uint32 flags); //conjunt de coses que configurar al iniciar el programa
@@ -29,13 +30,12 @@ class Game
     private:
 
         //Atributs
-        bool funcionant_; //Atribut per mirar si continua el loop del joc.
+        bool m_funcionant; //Atribut per mirar si continua el loop del joc.
         SDL_Window* m_pWindow; //Window del joc.
         SDL_Renderer* m_pRenderer; //Renderer del joc.
 
-        SDL_Texture* m_pTexture; //textura tutorial
-        SDL_Rect m_sourceRectangle; //primer rectangle
-        SDL_Rect m_destinationRectangle; //segon rectangle
+        int m_currentFrame;
+        TextureManager m_textureManager;
 };
 
 #endif // GAME_H

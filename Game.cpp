@@ -13,17 +13,17 @@ Game::~Game()
 
 bool Game::inicialitzar(char* title, int xpos, int ypos, int width, int height, Uint32 flags)
 {
-    //intentem inicialitzar SDL
+    //try init SDL
     if (SDL_Init(SDL_INIT_EVERYTHING) == 0)
     {
         cout << "SDL inicialitzat" << endl;
         //init the window
         m_pWindow = SDL_CreateWindow(title , xpos, ypos, width, height, flags);
-        if(m_pWindow != 0) // inicialitzar la window
+        if(m_pWindow != 0) // init window
         {
             cout << "SDL window incialitzat" << endl;
             m_pRenderer = SDL_CreateRenderer(m_pWindow, -1,0);
-            if(m_pRenderer != 0) //renderer incialitzat
+            if(m_pRenderer != 0) //renderer init
             {
                 cout << "renderer inicialitzat correctament" << endl;
                 SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
@@ -43,24 +43,15 @@ bool Game::inicialitzar(char* title, int xpos, int ypos, int width, int height, 
         return false;
     }
     cout << "incialitacio correcte " << endl;
-    funcionant_ = true;
+    m_funcionant = true;
 
-    //inicialitzacio surface-texture
-    SDL_Surface* pTempSurface = IMG_Load("img/animate-alpha.png");
-    m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer,pTempSurface);
-    SDL_FreeSurface(pTempSurface);
+    //load images/sprites
+    m_textureManager.load("img/animate-alpha.png", "animate_dog", m_pRenderer);
+
+
     // no necessari ara mateix // SDL_QueryTexture(m_pTexture, NULL, NULL, &m_sourceRectangle.w, &m_sourceRectangle.h); //guardem a msourceRectangle les dimensions de m_pTexture
 
-    m_sourceRectangle.w = 128;
-    m_sourceRectangle.h = 82;
-
-    m_destinationRectangle.x = m_sourceRectangle.x = 0;
-    m_destinationRectangle.y = m_sourceRectangle.y = 0;
-    m_destinationRectangle.w = m_sourceRectangle.w;
-    m_destinationRectangle.h = m_sourceRectangle.h;
-
     SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
-
     return true;
 }
 
@@ -68,14 +59,16 @@ void Game::render()
 {
     SDL_RenderClear(m_pRenderer); //natejem el renderer
 
-    SDL_RenderCopyEx(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinationRectangle, 0, 0, SDL_FLIP_HORIZONTAL);
+    //actual render images
+    m_textureManager.draw("animate_dog", 0, 0, 128, 82, m_pRenderer);
+    m_textureManager.drawFrame("animate_dog", 100, 100, 128, 82, 1, m_currentFrame, m_pRenderer);
 
     SDL_RenderPresent(m_pRenderer); //dibuixar en pantalla
 }
 
 void Game::update()
 {
-    m_sourceRectangle.x = 128 * int((SDL_GetTicks() / 100) % 6);
+    m_currentFrame = int((SDL_GetTicks() / 100) % 6);
 }
 
 void Game::tractarEvents()
@@ -86,7 +79,7 @@ void Game::tractarEvents()
         switch (event.type) //triem tipus d'event
         {
         case SDL_QUIT:
-            funcionant_ = false;
+            m_funcionant = false;
             break;
 
         default:
@@ -105,5 +98,5 @@ void Game::clean()
 
 bool Game::getFuncionant() const
 {
-    return funcionant_;
+    return m_funcionant;
 }

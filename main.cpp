@@ -4,7 +4,6 @@
     #include <stdlib.h>
 #endif
 
-
 #include <string>
 
 #include "Game.h"
