@@ -46,7 +46,7 @@ bool Game::inicialitzar(char* title, int xpos, int ypos, int width, int height, 
     funcionant_ = true;
 
     //inicialitzacio surface-texture
-    SDL_Surface* pTempSurface = SDL_LoadBMP("img/animate.bmp");
+    SDL_Surface* pTempSurface = IMG_Load("img/animate-alpha.png");
     m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer,pTempSurface);
     SDL_FreeSurface(pTempSurface);
     // no necessari ara mateix // SDL_QueryTexture(m_pTexture, NULL, NULL, &m_sourceRectangle.w, &m_sourceRectangle.h); //guardem a msourceRectangle les dimensions de m_pTexture
@@ -59,6 +59,8 @@ bool Game::inicialitzar(char* title, int xpos, int ypos, int width, int height, 
     m_destinationRectangle.w = m_sourceRectangle.w;
     m_destinationRectangle.h = m_sourceRectangle.h;
 
+    SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
+
     return true;
 }
 
@@ -66,7 +68,7 @@ void Game::render()
 {
     SDL_RenderClear(m_pRenderer); //natejem el renderer
 
-    SDL_RenderCopy(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinationRectangle);
+    SDL_RenderCopyEx(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinationRectangle, 0, 0, SDL_FLIP_HORIZONTAL);
 
     SDL_RenderPresent(m_pRenderer); //dibuixar en pantalla
 }
