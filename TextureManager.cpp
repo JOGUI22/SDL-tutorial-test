@@ -1,14 +1,6 @@
 #include "TextureManager.h"
 
-TextureManager::TextureManager()
-{
-    //ctor
-}
-
-TextureManager::~TextureManager()
-{
-    //dtor
-}
+TextureManager* TextureManager::s_pInstance = 0;
 
 bool TextureManager::load(string fileName, string id, SDL_Renderer* pRenderer)
 {

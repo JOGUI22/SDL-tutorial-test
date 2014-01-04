@@ -9,12 +9,20 @@
 
 using namespace std;
 
-class TextureManager
+class TextureManager //its a SINGLETON (unitary class) it's called TextureManager::Instance->function
 {
     public:
-        //Constructors
-        TextureManager();
-        ~TextureManager();
+        //Constructors                                  //////////////////////
+        static TextureManager* Instance()               //////////////////////
+        {                                               //////////////////////
+            if(s_pInstance == 0)                        //////// SINGLETON ////
+            {                                           //////////////////////
+                s_pInstance = new TextureManager();     //////////////////////
+            }                                           //////////////////////
+                                                        //////////////////////
+            return s_pInstance;                         //////////////////////
+        }
+
 
         //Metodes
         bool load(string fileName, string id, SDL_Renderer* pRenderer); //Load the image with the fileName, and assigns an id.
@@ -27,7 +35,13 @@ class TextureManager
 
     private:
         map<string, SDL_Texture*> m_textureMap; //map with all the SDL_Textures
+        TextureManager(){}; //now is a SINGLETON
+        ~TextureManager();
+
+        static TextureManager* s_pInstance; // Now in GOD-MODE SINGLETON
 };
+
+typedef TextureManager TheTextureManager;//Owned SINGLETON
 
 #endif // TEXTUREMANAGER_H
 

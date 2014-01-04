@@ -35,7 +35,6 @@ class Game
         SDL_Renderer* m_pRenderer; //Renderer del joc.
 
         int m_currentFrame;
-        TextureManager m_textureManager;
 };
 
 #endif // GAME_H
