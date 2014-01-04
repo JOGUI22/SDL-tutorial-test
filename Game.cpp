@@ -46,10 +46,13 @@ bool Game::inicialitzar(char* title, int xpos, int ypos, int width, int height, 
     funcionant_ = true;
 
     //inicialitzacio surface-texture
-    SDL_Surface* pTempSurface = SDL_LoadBMP("img/pj");
+    SDL_Surface* pTempSurface = SDL_LoadBMP("img/animate.bmp");
     m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer,pTempSurface);
     SDL_FreeSurface(pTempSurface);
-    SDL_QueryTexture(m_pTexture, NULL, NULL, &m_sourceRectangle.w, &m_sourceRectangle.h); //guardem a msourceRectangle les dimensions de m_pTexture
+    // no necessari ara mateix // SDL_QueryTexture(m_pTexture, NULL, NULL, &m_sourceRectangle.w, &m_sourceRectangle.h); //guardem a msourceRectangle les dimensions de m_pTexture
+
+    m_sourceRectangle.w = 128;
+    m_sourceRectangle.h = 82;
 
     m_destinationRectangle.x = m_sourceRectangle.x = 0;
     m_destinationRectangle.y = m_sourceRectangle.y = 0;
@@ -70,7 +73,7 @@ void Game::render()
 
 void Game::update()
 {
-
+    m_sourceRectangle.x = 128 * int((SDL_GetTicks() / 100) % 6);
 }
 
 void Game::tractarEvents()
