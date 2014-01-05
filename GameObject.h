@@ -1,11 +1,6 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
 
-#include <string>
-#include <iostream>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
-#include "TextureManager.h"
 #include "LoaderParams.h"
 
 using namespace std;

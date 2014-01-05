@@ -6,10 +6,10 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <iostream>
+#include "Enemy.h"
+#include "Player.h"
 #include "TextureManager.h"
 #include "GameObject.h"
-#include "Player.h"
-#include "Enemy.h"
 
 using namespace std;
 
@@ -57,6 +57,7 @@ class Game //SINGLETON
         int m_currentFrame;
 
         //POLYMORFISM OBJECTS (have it declared allow us to create them everywhere
+
         //STL containers
         vector<GameObject*> m_gameObjects; //saves all gameObjects
 };

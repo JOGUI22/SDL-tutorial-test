@@ -2,7 +2,7 @@
 #define PLAYER_H
 
 #include "SDLGameObject.h"
-#include "LoaderParams.h"
+
 
 class Player : public SDLGameObject
 {
