@@ -21,6 +21,8 @@ int main ( int argc, char** argv )
         game.tractarEvents();
         game.update();
         game.render();
+
+        SDL_Delay(10);
     }
     game.clean();
 

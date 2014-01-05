@@ -6,6 +6,8 @@
 #include <SDL2/SDL_image.h>
 #include <iostream>
 #include "TextureManager.h"
+#include "GameObject.h"
+#include "Player.h"
 
 using namespace std;
 
@@ -33,6 +35,9 @@ class Game
         bool m_funcionant; //Atribut per mirar si continua el loop del joc.
         SDL_Window* m_pWindow; //Window del joc.
         SDL_Renderer* m_pRenderer; //Renderer del joc.
+
+        GameObject m_go; //test gameObject
+        Player m_player; //test gamePlayer.
 
         int m_currentFrame;
 };

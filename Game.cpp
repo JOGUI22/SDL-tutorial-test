@@ -48,6 +48,8 @@ bool Game::inicialitzar(char* title, int xpos, int ypos, int width, int height, 
     //load images/sprites
     TextureManager::Instance()->load("img/animate-alpha.png", "animate_dog", m_pRenderer);
 
+    m_go.load(100, 100, 128, 82, "animate_dog");
+    m_player.load(300, 300, 128, 82, "animate_dog");
 
     // no necessari ara mateix // SDL_QueryTexture(m_pTexture, NULL, NULL, &m_sourceRectangle.w, &m_sourceRectangle.h); //guardem a msourceRectangle les dimensions de m_pTexture
 
@@ -60,15 +62,17 @@ void Game::render()
     SDL_RenderClear(m_pRenderer); //natejem el renderer
 
     //actual render images
-    TextureManager::Instance()->draw("animate_dog", 0, 0, 128, 82, m_pRenderer);
-    TextureManager::Instance()->drawFrame("animate_dog", 100, 100, 128, 82, 1, m_currentFrame, m_pRenderer);
+    m_go.draw(m_pRenderer);
+    m_player.draw(m_pRenderer);
 
+    ///////////////////
     SDL_RenderPresent(m_pRenderer); //dibuixar en pantalla
 }
 
 void Game::update()
 {
-    m_currentFrame = int((SDL_GetTicks() / 100) % 6);
+    m_go.update();
+    m_player.update();
 }
 
 void Game::tractarEvents()
