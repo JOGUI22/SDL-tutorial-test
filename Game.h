@@ -1,6 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include <vector>
 #include <string>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
@@ -8,6 +9,7 @@
 #include "TextureManager.h"
 #include "GameObject.h"
 #include "Player.h"
+#include "Enemy.h"
 
 using namespace std;
 
@@ -35,11 +37,15 @@ class Game
         bool m_funcionant; //Atribut per mirar si continua el loop del joc.
         SDL_Window* m_pWindow; //Window del joc.
         SDL_Renderer* m_pRenderer; //Renderer del joc.
-
-        GameObject m_go; //test gameObject
-        Player m_player; //test gamePlayer.
-
         int m_currentFrame;
+
+        //POLYMORFISM OBJECTS (have it declared allow us to create them everywhere
+        GameObject* m_go;
+        GameObject* m_player;
+        GameObject* m_enemy;
+
+        //STL containers
+        vector<GameObject*> m_gameObjects; //saves all gameObjects
 };
 
 #endif // GAME_H

@@ -45,11 +45,21 @@ bool Game::inicialitzar(char* title, int xpos, int ypos, int width, int height, 
     cout << "incialitacio correcte " << endl;
     m_funcionant = true;
 
-    //load images/sprites
+    //load images/sprites on database;
     TextureManager::Instance()->load("img/animate-alpha.png", "animate_dog", m_pRenderer);
 
-    m_go.load(100, 100, 128, 82, "animate_dog");
-    m_player.load(300, 300, 128, 82, "animate_dog");
+    //Initialize GameObjects
+    m_go = new GameObject();
+    m_player = new Player();
+    m_enemy = new Enemy();
+
+    m_go->load(100, 100, 128, 82, "animate_dog");
+    m_player->load(300, 300, 128, 82, "animate_dog");
+    m_enemy->load(0, 0, 128, 82, "animate_dog");
+
+    m_gameObjects.push_back(m_go);
+    m_gameObjects.push_back(m_player);
+    m_gameObjects.push_back(m_enemy);
 
     // no necessari ara mateix // SDL_QueryTexture(m_pTexture, NULL, NULL, &m_sourceRectangle.w, &m_sourceRectangle.h); //guardem a msourceRectangle les dimensions de m_pTexture
 
@@ -59,20 +69,24 @@ bool Game::inicialitzar(char* title, int xpos, int ypos, int width, int height, 
 
 void Game::render()
 {
-    SDL_RenderClear(m_pRenderer); //natejem el renderer
+    SDL_RenderClear(m_pRenderer); //clean renderer
 
     //actual render images
-    m_go.draw(m_pRenderer);
-    m_player.draw(m_pRenderer);
+    for(int i = 0; i < m_gameObjects.size(); i++) //we draw all gameObject images
+    {
+        m_gameObjects[i]->draw(m_pRenderer); //virtual GameObject methods allow us to use the propper inner level class method.
+    }
 
     ///////////////////
-    SDL_RenderPresent(m_pRenderer); //dibuixar en pantalla
+    SDL_RenderPresent(m_pRenderer); //draw in window
 }
 
 void Game::update()
 {
-    m_go.update();
-    m_player.update();
+    for (int i = 0; i < m_gameObjects.size(); i++)//we update all gameObjects
+    {
+        m_gameObjects[i]->update(); //virtual GameObject methods allow us to use the propper inner level class methods
+    }
 }
 
 void Game::tractarEvents()

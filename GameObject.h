@@ -14,10 +14,10 @@ class GameObject
     public:
         GameObject();
 
-        void load(int x, int y, int width, int height, string textureID); //load. get ready.
-        void draw(SDL_Renderer* pRenderer); //draw in screen
-        void update(); //update status/information of this
-        void clean(); //destructor
+        virtual void load(int x, int y, int width, int height, string textureID); //load. get ready.
+        virtual void draw(SDL_Renderer* pRenderer); //draw in screen
+        virtual void update(); //update status/information of this
+        virtual void clean(); //destructor
 
     protected: //we want some use with his family-object
 
