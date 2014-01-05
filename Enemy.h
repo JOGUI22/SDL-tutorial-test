@@ -1,18 +1,17 @@
 #ifndef ENEMY_H
 #define ENEMY_H
 
-#include "GameObject.h"
+#include "SDLGameObject.h"
+#include "LoaderParams.h"
 
-
-class Enemy : public GameObject //inherit from GameObject
+class Enemy : public SDLGameObject //inherit from GameObject
 {
     public:
-        Enemy();
+        Enemy(const LoaderParams* pParams);
 
-        void load(int x, int y, int width, int height, string textureID);
-        void draw(SDL_Renderer* pRenderer); //draw player
-        void update(); //update status/info player
-        void clean (); //destructor
+        virtual void draw(); //draw player
+        virtual void update(); //update status/info player
+        virtual void clean (); //destructor
 
     protected:
     private:

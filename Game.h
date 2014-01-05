@@ -13,11 +13,24 @@
 
 using namespace std;
 
-class Game
+class Game //SINGLETON
 {
     public:
+
+        //SINGLETON creation
+        static Game* Instance()
+        {
+            if(s_pInstance == 0)
+            {
+                s_pInstance = new Game();
+                return s_pInstance;
+            }
+            return s_pInstance;
+        }
+        SDL_Renderer* getRenderer() const {return m_pRenderer;}
+
         //Constructors
-        Game();
+
         ~Game();
 
         //Game metodes
@@ -33,6 +46,10 @@ class Game
 
     private:
 
+        //SINGLETON transformation
+        Game();
+        static Game* s_pInstance;
+
         //Atributs
         bool m_funcionant; //Atribut per mirar si continua el loop del joc.
         SDL_Window* m_pWindow; //Window del joc.
@@ -40,12 +57,10 @@ class Game
         int m_currentFrame;
 
         //POLYMORFISM OBJECTS (have it declared allow us to create them everywhere
-        GameObject* m_go;
-        GameObject* m_player;
-        GameObject* m_enemy;
-
         //STL containers
         vector<GameObject*> m_gameObjects; //saves all gameObjects
 };
+
+typedef Game TheGame;
 
 #endif // GAME_H

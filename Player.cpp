@@ -1,18 +1,13 @@
 #include "Player.h"
 
-Player::Player()
+Player::Player(const LoaderParams* pParams) : SDLGameObject(pParams) //inherance from SDLGameObject
 {
     //ctor
 }
 
-void Player::load(int x, int y, int width, int height, string textureID)
+void Player::draw()
 {
-    GameObject::load(x, y, width, height, textureID);
-}
-
-void Player::draw(SDL_Renderer* pRenderer)
-{
-    GameObject::draw(pRenderer); //example inherance call
+    SDLGameObject::draw(); //SDLGameObject draw function
 }
 
 void Player::update()
@@ -23,6 +18,5 @@ void Player::update()
 
 void Player::clean()
 {
-    GameObject::clean();
-    cout << "clean player" << endl;
+
 }

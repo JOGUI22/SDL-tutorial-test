@@ -12,19 +12,18 @@ using namespace std;
 
 int main ( int argc, char** argv )
 {
-    Game game;
-
-    game.inicialitzar("Chapter 1",100,100,640,480,0);
-
-    while (game.getFuncionant())
+    if(TheGame::Instance()->inicialitzar("Chapter 1", 100, 100, 640, 480, 0))
     {
-        game.tractarEvents();
-        game.update();
-        game.render();
+        while (TheGame::Instance()->getFuncionant())
+        {
+            TheGame::Instance()->tractarEvents();
+            TheGame::Instance()->update();
+            TheGame::Instance()->render();
 
-        SDL_Delay(10);
+            SDL_Delay(10);
+        }
+        TheGame::Instance()->clean();
     }
-    game.clean();
 
     return 0;
 }

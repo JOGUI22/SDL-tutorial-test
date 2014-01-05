@@ -1,18 +1,14 @@
 #include "Enemy.h"
 
-Enemy::Enemy()
+Enemy::Enemy(const LoaderParams* pParams) : SDLGameObject(pParams)
 {
     //ctor
 }
 
-void Enemy::load(int x, int y, int width, int height, string textureID)
-{
-    GameObject::load(x, y, width, height, textureID);
-}
 
-void Enemy::draw(SDL_Renderer* pRenderer)
+void Enemy::draw()
 {
-    GameObject::draw(pRenderer); //example inherance call
+    SDLGameObject::draw(); //example inherance call
 }
 
 void Enemy::update()
@@ -24,6 +20,5 @@ void Enemy::update()
 
 void Enemy::clean()
 {
-    GameObject::clean();
-    cout << "clean player" << endl;
+
 }

@@ -5,32 +5,24 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
-#include "TextureManager.h">
+#include "TextureManager.h"
+#include "LoaderParams.h"
 
 using namespace std;
 
-class GameObject
+class GameObject //ABSTRACT CLASS (we force all derived classe to have this methods.
 {
     public:
         GameObject();
 
-        virtual void load(int x, int y, int width, int height, string textureID); //load. get ready.
-        virtual void draw(SDL_Renderer* pRenderer); //draw in screen
-        virtual void update(); //update status/information of this
-        virtual void clean(); //destructor
+        virtual void draw()=0;
+        virtual void update()=0;
+        virtual void clean()=0;
 
     protected: //we want some use with his family-object
 
-        string m_textureID; //ID with the texture located in the TextureManager classs.
-
-        int m_currentFrame; //current frame active (only for sprites)
-        int m_currentRow;   //advanced functionallity for interactive sprites
-
-        int m_x; //atribute pos x
-        int m_y; //atribute pos y
-
-        int m_width; //atribute width
-        int m_height; //atribute height
+        GameObject(const LoaderParams* pParams){} //strange constructor
+        virtual ~GameObject() {} //destructor
     private:
 };
 
