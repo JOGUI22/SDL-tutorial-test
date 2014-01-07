@@ -6,10 +6,10 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <iostream>
-#include "Enemy.h"
-#include "Player.h"
 #include "TextureManager.h"
 #include "GameObject.h"
+#include "Enemy.h"
+#include "Player.h"
 
 using namespace std;
 

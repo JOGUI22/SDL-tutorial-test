@@ -53,6 +53,8 @@ bool Game::inicialitzar(char* title, int xpos, int ypos, int width, int height, 
     //Initialize GameObjects optmized
     m_gameObjects.push_back(new Enemy(new LoaderParams(100, 100, 128, 82, "animate_dog")));
     m_gameObjects.push_back(new Player(new LoaderParams(300, 300, 128, 82, "animate_dog")));
+    m_gameObjects.push_back(new Player(new LoaderParams(400, 0, 128, 82, "animate_dog")));
+
 
     // no necessari ara mateix // SDL_QueryTexture(m_pTexture, NULL, NULL, &m_sourceRectangle.w, &m_sourceRectangle.h); //guardem a msourceRectangle les dimensions de m_pTexture
 
