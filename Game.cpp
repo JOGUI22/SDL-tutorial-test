@@ -13,7 +13,7 @@ Game::~Game()
     //dtor
 }
 
-bool Game::inicialitzar(char* title, int xpos, int ypos, int width, int height, Uint32 flags)
+bool Game::init(char* title, int xpos, int ypos, int width, int height, Uint32 flags)
 {
     //try init SDL
     if (SDL_Init(SDL_INIT_EVERYTHING) == 0)
@@ -45,7 +45,7 @@ bool Game::inicialitzar(char* title, int xpos, int ypos, int width, int height, 
         return false;
     }
     cout << "incialitacio correcte " << endl;
-    m_funcionant = true;
+    m_running = true;
 
     //load images/sprites on database;
     TextureManager::Instance()->load("img/animate-alpha.png", "animate_dog", m_pRenderer);
@@ -84,7 +84,7 @@ void Game::update()
     }
 }
 
-void Game::tractarEvents()
+void Game::handleEvents()
 {
     SDL_Event event;
     if (SDL_PollEvent(&event))//poll pila
@@ -92,7 +92,7 @@ void Game::tractarEvents()
         switch (event.type) //triem tipus d'event
         {
         case SDL_QUIT:
-            m_funcionant = false;
+            m_running = false;
             break;
 
         default:
@@ -109,7 +109,7 @@ void Game::clean()
     SDL_Quit();
 }
 
-bool Game::getFuncionant() const
+bool Game::running() const
 {
-    return m_funcionant;
+    return m_running;
 }

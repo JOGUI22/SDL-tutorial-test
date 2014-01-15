@@ -34,14 +34,14 @@ class Game //SINGLETON
         ~Game();
 
         //Game methods
-        bool inicialitzar(char* title, int xpos, int ypos, int width, int height, Uint32 flags); //conjunt de coses que configurar al iniciar el programa
+        bool init(char* title, int xpos, int ypos, int width, int height, Uint32 flags); //conjunt de coses que configurar al iniciar el programa
         void render(); //conjunt de coses que fan veure en pantalla
         void update();//actualitzacions bufferianes
-        void tractarEvents();//tractament de evenets (inputs)
+        void handleEvents();//tractament de evenets (inputs)
         void clean();//delete
 
         //GETs
-        bool getFuncionant() const;
+        bool running() const;
 
 
     private:
@@ -51,7 +51,7 @@ class Game //SINGLETON
         static Game* s_pInstance;
 
         //Atributs
-        bool m_funcionant; //Atribut per mirar si continua el loop del joc.
+        bool m_running; //Atribut per mirar si continua el loop del joc.
         SDL_Window* m_pWindow; //Window del joc.
         SDL_Renderer* m_pRenderer; //Renderer del joc.
         int m_currentFrame;
