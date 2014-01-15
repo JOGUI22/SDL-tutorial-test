@@ -17,7 +17,9 @@ class SDLGameObject : public GameObject //Inherance from ABSTRACT GameObject
 
     protected:
 
-        Vector2D m_position;
+        Vector2D m_position; //controls position of the GameObject
+        Vector2D m_velocity; //controls velocity of the GameObject
+        Vector2D m_acceleration; //controls acceleration of the GameObject
 
         int m_width;
         int m_height;

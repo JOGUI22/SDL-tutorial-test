@@ -4,6 +4,8 @@
 SDLGameObject::SDLGameObject(const LoaderParams* pParams) : GameObject (pParams)
 {
     m_position = Vector2D(pParams->getX(), pParams->getY());
+    m_velocity = Vector2D(0,0);
+    m_acceleration = Vector2D(0,0);
     m_width = pParams->getWidth();
     m_height = pParams->getHeight();
     m_textureID = pParams->getTextureID();
@@ -21,7 +23,8 @@ void SDLGameObject::draw()
 
 void SDLGameObject::update()
 {
-
+    m_velocity += m_acceleration; //scalation acceleration-vel-pos
+    m_position += m_velocity;
 }
 
 void SDLGameObject::clean()
