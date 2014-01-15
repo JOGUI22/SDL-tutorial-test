@@ -24,7 +24,7 @@ class TextureManager //its a SINGLETON (unitary class) it's called TextureManage
         }
 
 
-        //Metodes
+        //Methods
         bool load(string fileName, string id, SDL_Renderer* pRenderer); //Load the image with the fileName, and assigns an id.
 
         void draw (string id, int x, int y, int width, int height,

@@ -33,14 +33,14 @@ class Game //SINGLETON
 
         ~Game();
 
-        //Game metodes
+        //Game methods
         bool inicialitzar(char* title, int xpos, int ypos, int width, int height, Uint32 flags); //conjunt de coses que configurar al iniciar el programa
         void render(); //conjunt de coses que fan veure en pantalla
         void update();//actualitzacions bufferianes
         void tractarEvents();//tractament de evenets (inputs)
         void clean();//delete
 
-        //Consultors.
+        //GETs
         bool getFuncionant() const;
 
 
