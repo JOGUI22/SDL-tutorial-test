@@ -3,6 +3,7 @@
 
 #include "GameObject.h"
 #include "TextureManager.h"
+#include "Vector2D.h"
 
 
 class SDLGameObject : public GameObject //Inherance from ABSTRACT GameObject
@@ -16,8 +17,7 @@ class SDLGameObject : public GameObject //Inherance from ABSTRACT GameObject
 
     protected:
 
-        int m_x;
-        int m_y;
+        Vector2D m_position;
 
         int m_width;
         int m_height;
