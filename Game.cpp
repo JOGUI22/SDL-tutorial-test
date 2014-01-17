@@ -1,4 +1,6 @@
 #include "Game.h"
+#include "InputHandler.h"
+
 
 Game* Game::s_pInstance = 0;
 
@@ -58,6 +60,10 @@ bool Game::init(char* title, int xpos, int ypos, int width, int height, Uint32 f
 
     // no necessari ara mateix // SDL_QueryTexture(m_pTexture, NULL, NULL, &m_sourceRectangle.w, &m_sourceRectangle.h); //guardem a msourceRectangle les dimensions de m_pTexture
 
+    //joystick handling
+    TheInputHandler::Instance()->initialiseJoysticks();
+
+    //
     SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
     return true;
 }
@@ -86,19 +92,12 @@ void Game::update()
 
 void Game::handleEvents()
 {
-    SDL_Event event;
-    if (SDL_PollEvent(&event))//poll pila
-    {
-        switch (event.type) //triem tipus d'event
-        {
-        case SDL_QUIT:
-            m_running = false;
-            break;
+    TheInputHandler::Instance()->update();
+}
 
-        default:
-            break;
-        }
-    }
+void Game::quit()
+{
+    clean();
 }
 
 void Game::clean()
@@ -106,6 +105,7 @@ void Game::clean()
     cout << "natejem el joc" << endl;
     SDL_DestroyWindow(m_pWindow);
     SDL_DestroyRenderer(m_pRenderer);
+    TheInputHandler::Instance()->clean();
     SDL_Quit();
 }
 

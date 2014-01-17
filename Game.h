@@ -39,6 +39,7 @@ class Game //SINGLETON
         void update();//actualitzacions bufferianes
         void handleEvents();//tractament de evenets (inputs)
         void clean();//delete
+        void quit();//calls clean
 
         //GETs
         bool running() const;
