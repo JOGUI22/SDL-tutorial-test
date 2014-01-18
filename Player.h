@@ -14,6 +14,8 @@ class Player : public SDLGameObject
         virtual void clean (); //destructor
     protected:
     private:
+
+        void handleInput(); //handles input from SINGLETON InputHandler
 };
 
 #endif // PLAYER_H
