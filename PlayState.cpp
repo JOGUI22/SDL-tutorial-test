@@ -1,6 +1,8 @@
 #include "PlayState.h"
 #include <iostream>
 
+const string PlayState::s_playID = "PLAY";
+
 using namespace std;
 
 PlayState::PlayState()
@@ -28,4 +30,9 @@ bool PlayState::onExit()
 {
     cout << "exiting PlayState " << endl;
     return true;
+}
+
+string PlayState::getStateID() const
+{
+    return s_playID;
 }

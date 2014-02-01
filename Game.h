@@ -10,6 +10,10 @@
 #include "GameObject.h"
 #include "Enemy.h"
 #include "Player.h"
+#include "GameStateMachine.h"
+#include "MenuState.h"
+#include "PlayState.h"
+
 
 using namespace std;
 
@@ -56,6 +60,7 @@ class Game //SINGLETON
         SDL_Window* m_pWindow; //Window del joc.
         SDL_Renderer* m_pRenderer; //Renderer del joc.
         int m_currentFrame;
+        GameStateMachine* m_pGameStateMachine;
 
         //POLYMORFISM OBJECTS (have it declared allow us to create them everywhere
 

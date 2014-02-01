@@ -65,6 +65,12 @@ bool Game::init(char* title, int xpos, int ypos, int width, int height, Uint32 f
 
     //
     SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
+
+    //init of GameStateMachine
+    m_pGameStateMachine = new GameStateMachine();
+    m_pGameStateMachine->changeState(new MenuState());
+
+    //end
     return true;
 }
 
@@ -93,6 +99,11 @@ void Game::update()
 void Game::handleEvents()
 {
     TheInputHandler::Instance()->update();
+
+    if(TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN))
+    {
+        m_pGameStateMachine->changeState(new PlayState());
+    }
 }
 
 void Game::quit()
