@@ -47,6 +47,7 @@ class Game //SINGLETON
 
         //GETs
         bool running() const;
+        GameStateMachine* getStateMachine();
 
 
     private:
@@ -59,8 +60,8 @@ class Game //SINGLETON
         bool m_running; //Atribut per mirar si continua el loop del joc.
         SDL_Window* m_pWindow; //Window del joc.
         SDL_Renderer* m_pRenderer; //Renderer del joc.
-        int m_currentFrame;
-        GameStateMachine* m_pGameStateMachine;
+        int m_currentFrame; //NOTE: is it needed?
+        GameStateMachine* m_pGameStateMachine; //ACTUAL GAMESTATEMACHINE
 
         //POLYMORFISM OBJECTS (have it declared allow us to create them everywhere
 

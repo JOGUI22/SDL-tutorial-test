@@ -79,10 +79,7 @@ void Game::render()
     SDL_RenderClear(m_pRenderer); //clean renderer
 
     //actual render images
-    for(int i = 0; i < m_gameObjects.size(); i++) //we draw all gameObject images
-    {
-        m_gameObjects[i]->draw(); //virtual GameObject methods allow us to use the propper inner level class method.
-    }
+    m_pGameStateMachine->render();
 
     ///////////////////
     SDL_RenderPresent(m_pRenderer); //draw in window
@@ -90,10 +87,7 @@ void Game::render()
 
 void Game::update()
 {
-    for (int i = 0; i < m_gameObjects.size(); i++)//we update all gameObjects
-    {
-        m_gameObjects[i]->update(); //virtual GameObject methods allow us to use the propper inner level class methods
-    }
+    m_pGameStateMachine->update();
 }
 
 void Game::handleEvents()
@@ -113,7 +107,6 @@ void Game::quit()
 
 void Game::clean()
 {
-    cout << "natejem el joc" << endl;
     SDL_DestroyWindow(m_pWindow);
     SDL_DestroyRenderer(m_pRenderer);
     TheInputHandler::Instance()->clean();
@@ -123,4 +116,9 @@ void Game::clean()
 bool Game::running() const
 {
     return m_running;
+}
+
+GameStateMachine* Game::getStateMachine()
+{
+    return m_pGameStateMachine;
 }

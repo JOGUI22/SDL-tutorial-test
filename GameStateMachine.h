@@ -14,6 +14,10 @@ class GameStateMachine //manages all gamestates
         void pushState(GameState* pState); //add state without removing the previous state
         void changeState(GameState* pState); //remove current state and change adding another
         void popState(); //remove current state without adding another
+
+        void update();
+        void render();
+
     protected:
     private:
 

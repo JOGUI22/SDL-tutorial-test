@@ -5,6 +5,8 @@ using namespace std;
 
 #include "GameState.h"
 #include <string>
+#include <vector>
+#include "GameObject.h"
 
 
 class PlayState : public GameState
@@ -21,7 +23,8 @@ class PlayState : public GameState
     protected:
     private:
 
-        static const string s_playID;
+        static const string s_playID; //string ID identificator
+        vector<GameObject*> m_gameObjects; //vector with all the gameObjects
 };
 
 #endif // PLAYSTATE_H

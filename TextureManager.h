@@ -33,6 +33,7 @@ class TextureManager //its a SINGLETON (unitary class) it's called TextureManage
         void drawFrame(string id, int x, int y, int width, int height,
                        int currentRow, int currentFrame, SDL_Renderer* pRenderer, SDL_RendererFlip flip = SDL_FLIP_NONE); //draw image sprite
 
+        void clearFromTextureMap(string id); //delete SDL_Texture from the map
     private:
         map<string, SDL_Texture*> m_textureMap; //map with all the SDL_Textures
         TextureManager(){}; //now is a SINGLETON
