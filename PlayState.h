@@ -7,6 +7,7 @@ using namespace std;
 #include <string>
 #include <vector>
 #include "GameObject.h"
+#include "PauseState.h"
 
 
 class PlayState : public GameState
