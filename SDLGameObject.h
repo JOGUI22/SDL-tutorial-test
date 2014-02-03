@@ -15,6 +15,11 @@ class SDLGameObject : public GameObject //Inherance from ABSTRACT GameObject
         virtual void update();
         virtual void clean();
 
+        //GETs
+        Vector2D& getPosition();
+        int getWidth();
+        int getHeight();
+
     protected:
 
         Vector2D m_position; //controls position of the GameObject
@@ -26,6 +31,7 @@ class SDLGameObject : public GameObject //Inherance from ABSTRACT GameObject
 
         int m_currentRow;
         int m_currentFrame;
+        int m_numFrames;
 
         string m_textureID;
 

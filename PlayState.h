@@ -8,6 +8,8 @@ using namespace std;
 #include <vector>
 #include "GameObject.h"
 #include "PauseState.h"
+#include "SDLGameObject.h"
+#include "GameOverState.h"
 
 
 class PlayState : public GameState
@@ -24,6 +26,10 @@ class PlayState : public GameState
     protected:
     private:
 
+        //Private methods:
+        bool checkCollision(SDLGameObject* p1, SDLGameObject* p2); //checks collision between p1 and p2
+
+        //Atributes:
         static const string s_playID; //string ID identificator
         vector<GameObject*> m_gameObjects; //vector with all the gameObjects
 };

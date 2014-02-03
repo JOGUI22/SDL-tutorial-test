@@ -49,22 +49,11 @@ bool Game::init(char* title, int xpos, int ypos, int width, int height, Uint32 f
     cout << "incialitacio correcte " << endl;
     m_running = true;
 
-    //load images/sprites on database;
-    TextureManager::Instance()->load("img/animate-alpha.png", "animate_dog", m_pRenderer);
-
-    //Initialize GameObjects optmized
-    m_gameObjects.push_back(new Enemy(new LoaderParams(100, 100, 128, 82, "animate_dog")));
-    m_gameObjects.push_back(new Player(new LoaderParams(300, 300, 128, 82, "animate_dog")));
-    m_gameObjects.push_back(new Player(new LoaderParams(400, 0, 128, 82, "animate_dog")));
-
-
-    // no necessari ara mateix // SDL_QueryTexture(m_pTexture, NULL, NULL, &m_sourceRectangle.w, &m_sourceRectangle.h); //guardem a msourceRectangle les dimensions de m_pTexture
-
     //joystick handling
     TheInputHandler::Instance()->initialiseJoysticks();
 
     //
-    SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
+    SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
 
     //init of GameStateMachine
     m_pGameStateMachine = new GameStateMachine();

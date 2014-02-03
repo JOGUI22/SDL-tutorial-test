@@ -18,7 +18,7 @@ void Player::update()
 
     handleInput();
 
-    m_currentFrame = int((SDL_GetTicks() / 100) % 5);
+    m_currentFrame = int((SDL_GetTicks() / 100) % m_numFrames);
 
     SDLGameObject::update(); //call the up-class
 }
